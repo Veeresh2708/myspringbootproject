@@ -16,7 +16,7 @@ pipeline {
         }
         stage('Checkout from Git') {
             steps {
-                git branch: 'Jacoco/unit_testing', url: 'https://github.com/Veeresh2708/macho.git'
+                git branch: 'main', url: 'https://github.com/Veeresh2708/myspringbootproject.git'
             }
         }
             stage('Build Artifact') {
