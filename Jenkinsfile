@@ -36,6 +36,16 @@ pipeline {
                 }
             }
         }
+        stage('Mutation Tests - PIT') {
+           steps {
+              sh "mvn org.pitest:pitest-maven:mutationCoverage"
+            }
+            post {
+                always {
+                    pitmutation mutationStatsFile: '**/target/pit-reports/**/mutations.xml'
+                }  
+            }
+        }
         stage('Trivy FS Scanning') {
             steps {
               sh 'trivy fs . > trivyfs.txt'
